@@ -2,8 +2,9 @@ Contacts
 
 To do: Design and implement and application using the Randomuser API following the next steps:
 
-Fech random users and save on the local database
-Search for a user based on the email address
+1. Fech random users and save on the local database
+2. Search for a user based on the email address
+3. Clicking on an item will display the user details
 
 Libraries:
 
