@@ -24,6 +24,15 @@
         <item name="textAppearanceBodyItalic14">@style/TextAppearance.Contacts.Body.Italic14</item>
         <item name="textAppearanceBodyBold20">@style/TextAppearance.Contacts.Body.Bold20</item>
 
+        <item name="actionMenuTextAppearance">@style/Contacts.MenuTextAppearance</item>
+
+    </style>
+
+    <style name="Contacts.MenuTextAppearance" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/philosopher_bold</item>
+        <item name="android:fontFamily">@font/philosopher_bold</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextAppearance.Contacts.Body.Bold20" parent="TextAppearance.MaterialComponents.Subtitle1">
