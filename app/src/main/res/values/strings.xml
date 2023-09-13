@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Contacts</string>
+
+    <string name="label_users">Users</string>
+    <string name="label_search">Search</string>
+    <string name="label_user_details">User Details</string>
+
+    <string name="label_user_name">%1$s %2$s</string>
+    <string name="label_user_address">%1$s, %2$s %3$d</string>
+    <string name="label_work">Work</string>
+    <string name="label_home">Home</string>
+    <string name="label_mobile">Mobile</string>
+
+    <string name="error_message_label">Something went wrong, please try again!</string>
+    <string name="error_no_user_result">Oops, no results. Please try with another email address!</string>
+    <string name="error_invalid_email_address">Invalid email address</string>
+
+    <string name="label_hint_search">Search for user</string>
+    <string name="label_placeholder">Email address</string>
+
+    <string name="label_permission_header">Call permission needed</string>
+    <string name="label_permission_call">We need the permission to place calls.</string>
+</resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.contacts.model.User" />
+
+        <variable
+            name="listener"
+            type="com.example.contacts.users.UserListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{ () -> listener.onUserClicked(data)}">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/userAvatar"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/detailsContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:userAvatar="@{data.picture.large}"
+            tools:src="@drawable/ic_face" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/detailsContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/userAvatar"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/userName"
+                style="@style/bodySemiBoldStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintBottom_toTopOf="@id/userEmail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:userName="@{data}"
+                tools:text="Oscar Armer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/userEmail"
+                style="@style/bodySemiBoldStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{data.email}"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintBottom_toTopOf="@id/userAddress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/userName"
+                tools:text="oscar.armer@gmail.com" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/userAddress"
+                style="@style/bodyRegularStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_nano"
+                android:textColor="@color/light_grey"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/userEmail"
+                app:userAddress="@{data}"
+                tools:text="Budapest, Hal koz 3/A" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/lighter_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/detailsContainer"
+            app:layout_constraintTop_toBottomOf="@id/detailsContainer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

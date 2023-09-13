@@ -1,0 +1,87 @@
+<resources>
+
+    <style name="Theme.Contacts" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryVariant">@color/black_light</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>\
+
+        <item name="toolbarStyle">@style/Contacts.ToolbarStyle</item>
+
+        <item name="textInputLayoutDense">@style/Contacts.TextInputLayout.OutLinedBox</item>
+
+        <item name="textAppearanceBodyRegular14">@style/TextAppearance.Contacts.Body.Regular14</item>
+        <item name="textAppearanceBodySemiBold14">@style/TextAppearance.Contacts.Body.SemiBold14</item>
+        <item name="textAppearanceBodyItalic14">@style/TextAppearance.Contacts.Body.Italic14</item>
+        <item name="textAppearanceBodyBold20">@style/TextAppearance.Contacts.Body.Bold20</item>
+
+    </style>
+
+    <style name="TextAppearance.Contacts.Body.Bold20" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/philosopher_bold</item>
+        <item name="android:fontFamily">@font/philosopher_bold</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.Contacts.Body.Regular14" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/philosopher_regular</item>
+        <item name="android:fontFamily">@font/philosopher_regular</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Contacts.Body.SemiBold14" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/philosopher_bold</item>
+        <item name="android:fontFamily">@font/philosopher_bold</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Contacts.Body.Italic14" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/philosopher_italic</item>
+        <item name="android:fontFamily">@font/philosopher_italic</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Contacts.Button.Medium" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/philosopher_bold</item>
+        <item name="android:fontFamily">@font/philosopher_bold</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Contacts.AppSplashScreen" parent="Theme.Contacts">
+        <item name="android:windowBackground">@color/coffee_cream</item>
+    </style>
+
+    <style name="Contacts.ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+        <item name="elevation">6dp</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Contacts.Body.Bold20</item>
+        <item name="background">?attr/colorPrimaryVariant</item>
+        <item name="navigationIcon">@drawable/ic_back</item>
+    </style>
+
+    <style name="Contacts.TextInputLayout.OutLinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="placeholderTextColor">?attr/colorPrimaryVariant</item>
+        <item name="placeholderTextAppearance">@style/TextAppearance.Contacts.Body.Regular14</item>
+        <item name="hintTextAppearance">@style/TextAppearance.Contacts.Button.Medium</item>
+        <item name="hintTextColor">?attr/colorPrimaryVariant</item>
+        <item name="android:textColorHint">?attr/colorPrimaryVariant</item>
+        <item name="hintEnabled">true</item>
+        <item name="expandedHintEnabled">false</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+</resources>

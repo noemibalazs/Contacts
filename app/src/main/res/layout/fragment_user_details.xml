@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.contacts.userdetails.UserDetailsViewModel" />
+
+        <variable
+            name="listener"
+            type="com.example.contacts.userdetails.UserDetailsClickListener" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:isScrollContainer="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_constraintBottom_toTopOf="@id/pictureContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@string/label_user_details" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pictureContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/userPicture"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:userAvatar="@{viewModel.user.picture.large}"
+                    tools:src="@drawable/mask" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/dark_teal"
+                    android:textSize="@dimen/text_size_xlarge"
+                    android:textStyle="bold"
+                    app:firstName="@{viewModel.user.name.firstName}"
+                    app:lastName="@{viewModel.user.name.lastName}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="Oscar Armer" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.45" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/contactsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium"
+                android:background="@color/white"
+                app:cardCornerRadius="@dimen/elevation"
+                app:cardElevation="@dimen/corner_radius"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pictureContainer"
+                app:layout_constraintVertical_bias="0.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="@dimen/margin_xxlarge"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/phoneIcon"
+                        android:layout_width="@dimen/avatar_size"
+                        android:layout_height="@dimen/avatar_size"
+                        android:layout_margin="@dimen/margin_large"
+                        android:onClick="@{ () -> listener.onPhoneClicked()}"
+                        android:padding="@dimen/margin_mnano"
+                        android:src="@drawable/ic_phone"
+                        android:tint="@color/dark_teal"
+                        app:layout_constraintEnd_toStartOf="@id/divider"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/mobileContainer" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/mobileContainer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{ () -> listener.onPhoneClicked()}"
+                        app:layout_constraintBottom_toTopOf="@id/phoneContainer"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/divider"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/userMobileNumber"
+                            style="@style/bodySemiBoldStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_large"
+                            android:text="@{viewModel.user.mobileNumber}"
+                            android:textSize="@dimen/text_size_large"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="+36 70 123 234" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/userMobileLabel"
+                            style="@style/bodyItalicStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="@string/label_mobile"
+                            android:textColor="@color/light_grey"
+                            android:textSize="@dimen/text_size_medium"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/userMobileNumber" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/mobileIcon"
+                            android:layout_width="@dimen/avatar_size"
+                            android:layout_height="@dimen/avatar_size"
+                            android:layout_margin="@dimen/margin_large"
+                            android:src="@drawable/ic_hangout"
+                            android:tint="@color/dark_teal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/phoneContainer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@id/horizontalDivider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/divider"
+                        app:layout_constraintTop_toBottomOf="@id/mobileContainer">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/userWorkNumber"
+                            style="@style/bodySemiBoldStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_large"
+                            android:text="@{viewModel.user.phoneNumber}"
+                            android:textSize="@dimen/text_size_large"
+                            app:layout_constraintBottom_toTopOf="@id/userWorkLabel"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="06 70 123 234" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/userWorkLabel"
+                            style="@style/bodyItalicStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="@string/label_work"
+                            android:textColor="@color/light_grey"
+                            android:textSize="@dimen/text_size_medium"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/userWorkNumber" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/workIcon"
+                            android:layout_width="@dimen/avatar_size"
+                            android:layout_height="@dimen/avatar_size"
+                            android:layout_margin="@dimen/margin_large"
+                            android:src="@drawable/ic_hangout"
+                            android:tint="@color/dark_teal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:id="@+id/horizontalDivider"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/lighter_grey"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/divider"
+                        app:layout_constraintTop_toBottomOf="@id/phoneContainer" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/emailIcon"
+                        android:layout_width="@dimen/avatar_size"
+                        android:layout_height="@dimen/avatar_size"
+                        android:layout_margin="@dimen/margin_large"
+                        android:onClick="@{() -> listener.onEmailClicked(viewModel.user.email)}"
+                        android:padding="@dimen/margin_mnano"
+                        android:src="@drawable/ic_email"
+                        android:tint="@color/dark_teal"
+                        app:layout_constraintEnd_toStartOf="@id/divider"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/emailContainer" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/emailContainer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> listener.onEmailClicked(viewModel.user.email)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/horizontalDivider"
+                        app:layout_constraintTop_toBottomOf="@id/horizontalDivider">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/userEmailAddress"
+                            style="@style/bodySemiBoldStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_large"
+                            android:text="@{viewModel.user.email}"
+                            android:textSize="@dimen/text_size_large"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="oscar.armer@gmail.com" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/userHomeLabel"
+                            style="@style/bodyItalicStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="@string/label_home"
+                            android:textColor="@color/light_grey"
+                            android:textSize="@dimen/text_size_medium"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/userEmailAddress" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="bodyRegularStyle" parent="TextAppearance.Contacts.Body.Regular14">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="bodyItalicStyle" parent="TextAppearance.Contacts.Body.Italic14">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="bodySemiBoldStyle" parent="TextAppearance.Contacts.Body.SemiBold14">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>

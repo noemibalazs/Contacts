@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.example.contacts.search.SearchViewModel" />
+
+        <variable
+            name="listener"
+            type="com.example.contacts.users.UserListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:layout_constraintBottom_toTopOf="@id/inputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@null"
+                app:title="@string/label_search"
+                app:titleTextColor="@color/white" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout"
+            style="?attr/textInputLayoutDense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_large"
+            android:hint="@string/label_hint_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+            app:placeholderText="@string/label_placeholder">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="@dimen/margin_small"
+                android:inputType="textEmailAddress"
+                app:drawableTint="@color/light_grey"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/usersRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_medium"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputLayout"
+            tools:itemCount="9"
+            tools:listitem="@layout/list_item_user" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/errorMessage"
+            style="@style/bodySemiBoldStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/error_no_user_result"
+            android:textSize="@dimen/text_size_large"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputLayout"
+            tools:visibility="visible" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressBar"
+            style="@style/Widget.Material3.CircularProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:indicatorColor="@color/light_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:progressBarState="@{model.progressVisibility}"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
