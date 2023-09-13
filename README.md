@@ -15,5 +15,4 @@ Libraries:
 5. Data/View Binding
 6. MVVM architecture
 7. Material design
-8. 
-![](../../Desktop/Screenshot_20230913_170850_Contacts.jpg)
+![Screenshot_20230913_170850_Contacts](https://github.com/noemibalazs/Contacts/assets/33603567/d0ebce90-9108-4233-a729-2fffbc90019f)
