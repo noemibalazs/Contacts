@@ -70,10 +70,6 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="Contacts.AppSplashScreen" parent="Theme.Contacts">
-        <item name="android:windowBackground">@color/coffee_cream</item>
-    </style>
-
     <style name="Contacts.ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
         <item name="elevation">6dp</item>
         <item name="titleTextAppearance">@style/TextAppearance.Contacts.Body.Bold20</item>
