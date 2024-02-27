@@ -1,8 +1,8 @@
 Contacts
 
-To do: Design and implement and application using the Randomuser API following the next steps:
+ToDo: Design and implement and application using the Randomuser API following the next steps:
 
-1. Fech random users and save on the local database
+1. Fetch random users and save on the local database
 2. Search for a user based on the email address
 3. Clicking on an item will display the user details
 
