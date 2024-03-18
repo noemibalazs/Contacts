@@ -3,7 +3,7 @@ package com.example.contacts.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.contacts.R
@@ -18,32 +18,28 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        setUpNavController()
+        navController = Navigation.findNavController(this, R.id.navContainer)
         setUpBottomNavigation()
     }
 
-    private fun setUpNavController() {
-        navController = supportFragmentManager.findFragmentById(R.id.navContainer)
-            .let { it as NavHostFragment }.navController
-        viewBinding.bottomNavigationView.setupWithNavController(navController)
-    }
-
     private fun setUpBottomNavigation() {
-        viewBinding.bottomNavigationView.selectedItemId = R.id.usersFragment
-
-        viewBinding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
-            NavigationUI.onNavDestinationSelected(menuItem, navController)
-            return@setOnItemSelectedListener true
+        with(viewBinding.bottomNavigationView) {
+            setupWithNavController(navController)
+            selectedItemId = R.id.usersFragment
+            setOnItemSelectedListener { item ->
+                NavigationUI.onNavDestinationSelected(item, navController)
+                return@setOnItemSelectedListener true
+            }
         }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
     }
-
 
     override fun finish() {
         super.finish()
